@@ -3,8 +3,12 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import sequelize from './config/database';
 
-// Carrega variáveis de ambiente
-dotenv.config();
+dotenv.config(); // ✅ Carrega as variáveis de ambiente antes de qualquer uso
+
+const app = express(); // ✅ Cria o app antes de usar
+
+app.use(cors());
+app.use(express.json());
 
 // Importação de models apenas para registrar no Sequelize
 import './models/Cliente';
@@ -18,10 +22,6 @@ import clienteRoutes from './routes/clienteRoutes';
 import tecnicoRoutes from './routes/tecnicoRoutes';
 import produtoServicoRoutes from './routes/produtoServicoRoutes';
 import ordemServicoRoutes from './routes/ordemServicoRoutes';
-
-const app = express();
-app.use(cors());
-app.use(express.json());
 
 // Conexão com o banco e sincronização
 sequelize.authenticate()

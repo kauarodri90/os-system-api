@@ -1,13 +1,13 @@
 import express from 'express';
 import controller from '../controllers/tecnicoController';
-import autenticar from '../middlewares/autenticar';
+import { autenticar } from '../middlewares/autenticar';
 
 const router = express.Router();
 
-// Rota pública
+// ✅ Rota pública
 router.post('/login', controller.login);
 
-// Rotas protegidas
+// ✅ Rotas protegidas
 router.get('/', autenticar, controller.listar);
 router.post('/', autenticar, controller.criar);
 router.put('/:id', autenticar, controller.atualizar);

@@ -1,11 +1,10 @@
 import { Router } from 'express';
 import controller from '../controllers/ordemServicoController';
-import autenticar from '../middlewares/autenticar';
+import { autenticar } from '../middlewares/autenticar'; // corrigido
 
 const router = Router();
 
-// Middleware aplicado a todas as rotas abaixo
-router.use(autenticar);
+router.use(autenticar); // 🔒 Aplica para todas as rotas
 
 router.get('/', controller.listar);
 router.post('/', controller.criar);
