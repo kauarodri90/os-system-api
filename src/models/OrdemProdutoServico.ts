@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const OrdemServico = require('./OrdemServico');
-const ProdutoServico = require('./ProdutoServico');
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database';
+import OrdemServico from './OrdemServico';
+import ProdutoServico from './ProdutoServico';
 
 const OrdemProdutoServico = sequelize.define('OrdemProdutoServico', {}, {
   tableName: 'ordem_produto_servico'
@@ -19,4 +19,4 @@ ProdutoServico.belongsToMany(OrdemServico, {
   foreignKey: 'produtoServicoId'
 });
 
-module.exports = OrdemProdutoServico;
+export default OrdemProdutoServico;

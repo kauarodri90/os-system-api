@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import controller from '../controllers/tecnicoController';
+import autenticar from '../middlewares/autenticar';
+
 const router = express.Router();
-const controller = require('../controllers/tecnicoController');
-const autenticar = require('../middlewares/autenticar');
 
 // Rota pública
 router.post('/login', controller.login);
@@ -12,4 +13,4 @@ router.post('/', autenticar, controller.criar);
 router.put('/:id', autenticar, controller.atualizar);
 router.patch('/:id/status', autenticar, controller.alterarStatus);
 
-module.exports = router;
+export default router;

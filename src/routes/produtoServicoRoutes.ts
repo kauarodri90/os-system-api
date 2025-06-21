@@ -1,10 +1,11 @@
-const express = require('express');
+import express from 'express';
+import controller from '../controllers/produtoServicoController';
+
 const router = express.Router();
-const controller = require('../controllers/produtoServicoController');
 
 router.get('/', controller.listar);
 router.post('/', controller.criar);
 router.put('/:id', controller.atualizar);
 router.patch('/:id/status', controller.alterarStatus);
 
-module.exports = router;
+export default router;
